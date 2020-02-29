@@ -143,11 +143,9 @@
 (setq display-time-mail-string "")
 (display-time-mode 1)
 
-;; (set-frame-font "-*-M+ 1m-normal-normal-normal-*-13-*-*-*-m-0-iso10646-1")
-;; (set-frame-font "SF mono 14" nil t)
+(global-font-lock-mode 1)
 (set-default-font "JetBrains Mono 27")
 (setq rust-format-on-save t)
-(global-font-lock-mode 1)
 
 (defun jetsilver/bazel-mode-hook ()
   (add-hook 'before-save-hook 'bazel-format))
@@ -167,6 +165,12 @@
 
 (use-package bazel-mode
   :defer t)
+
+(use-package ag
+  :ensure t
+  :config
+  (setq ag-highlight-search t
+        ag-reuse-buffers t))
 
 (use-package dockerfile-mode
   :mode "\\Dockerfile\\'")

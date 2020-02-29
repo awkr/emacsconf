@@ -3,16 +3,10 @@
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
 
-(setq user-emacs-directory "~/jetsilver/emacsconf"
-      package-user-dir "~/jetsilver/emacsconf/packages"
-      load-prefer-newer t
-      package--init-file-ensured t
-      )
+(setq load-prefer-newer t
+      package--init-file-ensured t)
 
-(unless (file-directory-p package-user-dir)
-  (make-directory package-user-dir t))
-
-;; (setq use-package-always-ensure t)
+(setq use-package-always-ensure t)
 
 (use-package server
   :ensure nil
@@ -124,9 +118,6 @@
       mac-mouse-wheel-smooth-scroll t)
 
 (setq-default shell-file-name "/bin/zsh")
-
-(setq default-directory "~/jetsilver/")
-
 (setq-default auto-save-default t)
 
 ;; backup
@@ -356,9 +347,9 @@ corresponding root is used instead."
   ;; remove commands that only work with key bindings
   (put 'counsel-find-symbol 'no-counsel-M-x t)
   :bind (("M-x" . counsel-M-x)
-		 ("C-x C-f" . counsel-find-file)
-		 ("C-x f" . counsel-fzf)
-		 ("C-c k" . counsel-ag)))
+         ("C-x C-f" . counsel-find-file)
+         ("C-x f" . counsel-fzf)
+         ("C-c k" . counsel-ag)))
 
 (use-package avy
   :ensure t
@@ -388,9 +379,6 @@ corresponding root is used instead."
 
 (when (string= system-type "darwin")
   (setq dired-use-ls-dired nil))
-
-(when (not package-archive-contents)
-  (package-refresh-contents))
 
 ;; org
 (setq org-startup-indented t)
@@ -442,6 +430,4 @@ corresponding root is used instead."
 (global-set-key [(meta shift p)] 'jet/move-line-up)
 (global-set-key [(meta shift n)] 'jet/move-line-down)
 
-;; (setq-default initial-scratch-message (concat ";; Happy hacking, " user-login-name " - Emacs ♥ you!\n\n")
-;;               )
 (setq-default initial-scratch-message ";; 一只船孤独地航行在海上\n;; 它既不寻求幸福 也不逃避幸福\n;; 它只是向前航行\n;; 底下是沉静碧蓝的大海 而头顶是金色的太阳\n;; 将要直面的 与已成过往的\n;; 较之深埋于它内心的 皆为微沫\n\n")
